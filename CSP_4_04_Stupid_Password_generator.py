@@ -13,7 +13,28 @@ The input is read as arguments and consists of two integers: n and l within the 
 Output Data
 Return a list of all "stupid" passwords in alphabetical order.
 """
+import random
+import string
+from binascii import crc32
+
 
 def stupidPassword(n: int, l: int):
-    pass
+    letters = 'abcdefghijklmnopqrstuvwxyz'
+    passwords = []
+
+    for n1 in range(1,n):
+        for n2 in range(1,n):
+            for n3 in range(l):
+                letter1 = letters[n3]
+                for n4 in range(l):
+                    letter2 = letters[n4]
+                    for n5 in range(1,n+1):
+                        if n5 > n1 and n5 > n2:
+                            password = str(n1) + str(n2) + letter1 + letter2 + str(n5)
+                            passwords.append(password)
+
+
+    return passwords
+
+
 
